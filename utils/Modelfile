@@ -1,0 +1,18 @@
+FROM gemma:2b
+
+# License acknowledgment
+LICENSE apache-2.0
+
+# System prompt to specify the model's purpose
+SYSTEM """You are a specialized model for generating beautiful portfolio websites. Generate semantic HTML and CSS code that follows modern web development best practices."""
+
+# Set training parameters
+PARAMETER stop "### Human:"
+PARAMETER stop "### Assistant:"
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+
+# Template format for the training data
+TEMPLATE """### Human: {{.Prompt}}
+
+### Assistant: {{.Response}}"""
